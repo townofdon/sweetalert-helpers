@@ -1,0 +1,23 @@
+{
+  "name": "sweetalert-helpers",
+  "version": "1.0.0",
+  "description": "Reusable functions for use with Sweetalert2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/townofdon/sweetalert-helpers.git"
+  },
+  "keywords": [
+    "Sweetalert",
+    "Sweetalert2"
+  ],
+  "author": "Don Townsend",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/townofdon/sweetalert-helpers/issues"
+  },
+  "homepage": "https://github.com/townofdon/sweetalert-helpers#readme"
+}
