@@ -36,6 +36,69 @@ export function hideDismissableLoadingNotice(data) {
 }
 
 /**
+ * Helper function displays a Sweetalert prompt to the user, with Yes and Cancel buttons.
+ *
+ * USAGE:
+ * promptAreYouSureBefore({
+ *   ev,
+ *   returnBool: true,
+ * })
+ *   .then(isConfirmed => {
+ *     if (!isConfirmed) {
+ *       return;
+ *     }
+ *     // user confirmed; proceed!
+ *   })
+ *
+ * @param {event}  ev
+ * @param {object} options
+ * @param {event}  options.ev
+ * @param {string} options.titleText
+ * @param {string} options.type
+ * @param {string} options.text
+ * @param {string} options.confirmButtonText
+ * @param {string} options.cancelButtonText
+ * @param {bool}   options.returnBool - allows user to return a boolean instead of traditional swal result.
+ * @returns {Promise}
+ */
+export function promptAreYouSureBefore(
+  {
+    ev,
+    titleText = 'Are you sure?',
+    type = 'warning',
+    text = 'This action is irreversible!',
+    confirmButtonText = 'Yes',
+    cancelButtonText = 'Cancel',
+    showCancelButton = true,
+    showCloseButton = false,
+    returnBool = false,
+  } = {}
+) {
+  ev && ev.preventDefault && ev.preventDefault();
+  return (
+    sweetalert2({
+      titleText,
+      text,
+      type,
+      confirmButtonText,
+      cancelButtonText,
+      showCancelButton,
+      showCloseButton,
+    })
+      .then(result => {
+        if (returnBool) {
+          return !!(
+            result
+            && !result.dismiss
+            && result.value
+          );
+        }
+        return result;
+      })
+  );
+}
+
+/**
  * Prompt and get user input.
  *
  * @param {object} options
